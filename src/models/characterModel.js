@@ -46,7 +46,7 @@ export async function createCharacter(data) {
 export async function listCharacters() {
   const res = await pool.query(
     `SELECT * FROM personagens
-     ORDER BY created_at DESC`
+     ORDER BY id DESC`
   );
   return res.rows;
 }
