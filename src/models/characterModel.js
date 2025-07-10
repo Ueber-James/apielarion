@@ -9,7 +9,7 @@ export async function createCharacter(data) {
     strength, dexterity, constitution, intelligence, wisdom, charisma,
     powerSource, castingForm, knownSpells, magicSideEffects,
     initialEquipment, rareItems, eventAt13, allies, enemiesThreats,
-    secrets, forbiddenDesire, celurianAlignment, magicAccessLevel, lumenitaRelation, editpassword
+    secrets, forbiddenDesire, celurianAlignment, magicAccessLevel, lumenitaRelation, editPassword 
   } = data;
 
   const res = await pool.query(
@@ -36,7 +36,7 @@ export async function createCharacter(data) {
       strength, dexterity, constitution, intelligence, wisdom, charisma,
       powerSource, castingForm, knownSpells, magicSideEffects,
       initialEquipment, rareItems, eventAt13, allies, enemiesThreats,
-      secrets, forbiddenDesire, celurianAlignment, magicAccessLevel, lumenitaRelation, editpassword
+      secrets, forbiddenDesire, celurianAlignment, magicAccessLevel, lumenitaRelation, editPassword
     ]
   );
   return res.rows[0];
