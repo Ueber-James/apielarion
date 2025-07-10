@@ -19,7 +19,7 @@ export async function createCharacter(data) {
        strength, dexterity, constitution, intelligence, wisdom, charisma,
        power_source, casting_form, known_spells, magic_side_effects,
        initial_equipment, rare_items, event_at_13, allies, enemies_threats,
-       secrets, forbidden_desire, celurian_alignment, magic_access_level, lumenita_relation,  edit_password        
+       secrets, forbidden_desire, celurian_alignment, magic_access_level, lumenita_relation, edit_password
      )
      VALUES (
        $1,$2,$3,$4,$5,

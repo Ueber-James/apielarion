@@ -13,7 +13,23 @@ const router = Router();
 /** POST /api/characters */
 router.post('/', async (req, res, next) => {
   try {
-    const character = await createCharacter(req.body);
+    // 1) transforma todas as strings vazias em null
+    const sanitized = Object.fromEntries(
+      Object.entries(req.body).map(([key, val]) => [
+        key,
+        val === '' ? null : val
+      ])
+    );
+
+    // 2) opcionalmente, force números nos campos numéricos
+    if (sanitized.age != null)  sanitized.age = parseInt(sanitized.age, 10);
+    ['strength','dexterity','constitution','intelligence','wisdom','charisma']
+      .forEach(stat => {
+        if (sanitized[stat] != null) 
+          sanitized[stat] = parseInt(sanitized[stat], 10);
+      });
+
+    const character = await createCharacter(sanitized);
     res.status(201).json(character);
   } catch (err) {
     next(err);
