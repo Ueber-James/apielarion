@@ -9,7 +9,7 @@ export async function createCharacter(data) {
     strength, dexterity, constitution, intelligence, wisdom, charisma,
     powerSource, castingForm, knownSpells, magicSideEffects,
     initialEquipment, rareItems, eventAt13, allies, enemiesThreats,
-    secrets, forbiddenDesire, celurianAlignment, magicAccessLevel, lumenitaRelation, editPassword 
+    secrets, forbiddenDesire, celurianAlignment, magicAccessLevel, lumenitaRelation
   } = data;
 
   const res = await pool.query(
@@ -19,7 +19,7 @@ export async function createCharacter(data) {
        strength, dexterity, constitution, intelligence, wisdom, charisma,
        power_source, casting_form, known_spells, magic_side_effects,
        initial_equipment, rare_items, event_at_13, allies, enemies_threats,
-       secrets, forbidden_desire, celurian_alignment, magic_access_level, lumenita_relation, edit_password
+       secrets, forbidden_desire, celurian_alignment, magic_access_level, lumenita_relation
      )
      VALUES (
        $1,$2,$3,$4,$5,
@@ -27,7 +27,7 @@ export async function createCharacter(data) {
        $10,$11,$12,$13,$14,$15,
        $16,$17,$18,$19,
        $20,$21,$22,$23,$24,
-       $25,$26,$27,$28,$29, $30
+       $25,$26,$27,$28,$29
      )
      RETURNING *`,
     [
@@ -36,7 +36,7 @@ export async function createCharacter(data) {
       strength, dexterity, constitution, intelligence, wisdom, charisma,
       powerSource, castingForm, knownSpells, magicSideEffects,
       initialEquipment, rareItems, eventAt13, allies, enemiesThreats,
-      secrets, forbiddenDesire, celurianAlignment, magicAccessLevel, lumenitaRelation, editPassword
+      secrets, forbiddenDesire, celurianAlignment, magicAccessLevel, lumenitaRelation
     ]
   );
   return res.rows[0];
@@ -46,7 +46,7 @@ export async function createCharacter(data) {
 export async function listCharacters() {
   const res = await pool.query(
     `SELECT * FROM personagens
-     ORDER BY id DESC`
+     ORDER BY created_at DESC`
   );
   return res.rows;
 }
